@@ -10,7 +10,7 @@ import { Button } from "../ui/button";
 
 import { BrandFormSchema as formSchema, BrandType } from '../../dataModel/brands';
 import FormElement from '../Molecules/FormElement';
-import { useBrandStore, BrandsState, BrandsActions } from "@/stores/brands-store"
+import { useBrandStore, BrandsState, BrandsActions } from "../../../stores/brands-store"
 
 const BrandForm = () => {
 const brands: BrandsState = useBrandStore((state: any) => state.brands);
