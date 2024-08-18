@@ -1,4 +1,4 @@
-import { useBrandStore, BrandsState } from '@/stores/brands-store';
+import { useBrandStore, BrandsState } from '../../../..//stores/brands-store';
 
 export const BrandListItem = ({id, name}: any): JSX.Element => {
   const { deleteBrand } = useBrandStore();  

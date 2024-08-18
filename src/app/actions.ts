@@ -1,6 +1,6 @@
 "use server";
 
-import { createBrand, fetchBrands, deleteBrand } from "@/db/queries/brands";
+import { createBrand, fetchBrands, deleteBrand } from "../db/queries/brands";
 // import { createEmulsion, fetchEmulsions } from "@/db/queries/emulsions";
 // import { deleteDeveloper } from '@/db/queries/developers';
 // import { createRodet } from "@/db/queries/rodets";

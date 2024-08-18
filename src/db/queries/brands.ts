@@ -1,5 +1,5 @@
 import type { Brand } from "@prisma/client";
-import db from "@/db";
+import db from "../../db";
 import { notFound } from "next/navigation";
 
 //create a prisma query to fetch all brands
