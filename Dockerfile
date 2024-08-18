@@ -18,7 +18,7 @@ RUN \
 
 COPY src/app ./app
 COPY public ./public
-COPY src/app/components ./components
+# COPY src/app/components ./components
 # COPY lib ./lib
 COPY next.config.mjs .
 COPY prisma ./prisma
