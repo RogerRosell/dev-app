@@ -1,0 +1,100 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Rodet {
+    id           String       @id @default(cuid())
+    createdAt    DateTime     @default(now()) @map(name: "created_at")
+    updatedAt    DateTime     @updatedAt @map(name: "updated_at")
+    emulsion     Emulsio?     @relation(fields: [emulsionName], references: [name])
+    emulsionName String?
+    numFrames    Int?
+    dx           Boolean      @default(false)
+    exposure     Exposure?
+    development  Development?
+    notes        String?
+
+    @@map(name: "rodets")
+}
+
+model Emulsio {
+    id        String   @id @default(cuid())
+    createdAt DateTime @default(now()) @map(name: "created_at")
+    updatedAt DateTime @updatedAt @map(name: "updated_at")
+    name      String   @unique
+    brand     Brand?   @relation(fields: [brandName], references: [name])
+    brandName String?
+    iso       Int
+    notes     String?
+    Rodet     Rodet[]
+}
+
+model Brand {
+    id        String      @id @default(cuid())
+    name      String      @unique
+    emulsio   Emulsio[]
+    developer Developer[]
+}
+
+model Exposure {
+    id         String   @id @default(cuid())
+    createdAt  DateTime @default(now()) @map(name: "created_at")
+    titol      String?
+    isoExposed Int?
+    notes      String?
+    rodet      Rodet    @relation(fields: [rodetId], references: [id])
+    rodetId    String   @unique
+}
+
+model Development {
+    id        String   @id @default(cuid())
+    createdAt DateTime @default(now()) @map(name: "created_at")
+    recipe    Recipe   @relation(fields: [recipeId], references: [id])
+    recipeId  String
+    fotos     String[]
+    rodet     Rodet    @relation(fields: [rodetId], references: [id])
+    rodetId   String   @unique
+    notes     String?
+}
+
+model Recipe {
+    id          String        @id @default(cuid())
+    createdAt   DateTime      @default(now()) @map(name: "created_at")
+    developer   Developer?    @relation(fields: [developerId], references: [id])
+    developerId String
+    dilution    String
+    time        String
+    Development Development[]
+    agitation   Agitation?    @relation(fields: [agitationId], references: [id])
+    agitationId String
+    notes       String?
+}
+
+model Developer {
+    id        String   @id @default(cuid())
+    createdAt DateTime @default(now()) @map(name: "created_at")
+    name      String   @unique
+    Recipe    Recipe[]
+    Brand     Brand?   @relation(fields: [brandId], references: [id])
+    brandId   String?
+}
+
+model Agitation {
+    id        String   @id @default(cuid())
+    createdAt DateTime @default(now()) @map(name: "created_at")
+    initial   String
+    turns     Int
+    frequency String
+    recipe    Recipe[]
+}
