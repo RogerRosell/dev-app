@@ -8,4 +8,4 @@ export const BrandModel = z.object({
 
 export const BrandFormSchema = inferSchema(BrandModel);
 
-export type BrandType = z.infer<typeof BrandModel>;
+export type TBrand = z.infer<typeof BrandModel>;

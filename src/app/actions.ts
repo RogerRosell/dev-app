@@ -1,10 +1,11 @@
 "use server";
 
+import { fetchDevelopers,createDeveloper, deleteDeveloper } from '@/db/queries/developers';
 import { createBrand, fetchBrands, deleteBrand } from "../db/queries/brands";
 // import { createEmulsion, fetchEmulsions } from "@/db/queries/emulsions";
 // import { deleteDeveloper } from '@/db/queries/developers';
 // import { createRodet } from "@/db/queries/rodets";
-import { formSchema } from "./validation";
+import { formSchema, DevelopersFormSchema } from "./validation";
 // import { ZodError } from "zod";
 // import { fetchDevelopers } from '@/db/queries/developers';
 
@@ -71,6 +72,31 @@ export const getFormSchema = (formType: String) => {};
 // 		console.log(e)
 // 	}
 // }
+
+export const getAllDevelopers = async () => {
+	const developers = await fetchDevelopers();
+	return developers;
+}
+
+export const addDeveloper2 = async (data: any) => {
+	try {
+		const { name, brandId } = DevelopersFormSchema.parse(data);
+		const newDeveloper = await createDeveloper({ name: name, brandId: brandId });
+		return newDeveloper;
+	} catch (e) {
+		console.log(e);
+	}
+}
+
+export const deleteDeveloper2 = async (id: string) => {
+	try {
+		const response = await deleteDeveloper(id);
+		return response;
+	} catch(e) {
+		console.log(e)
+	}
+}
+
 
 export const getAllBrands = async () => {
 	const brands = await fetchBrands();

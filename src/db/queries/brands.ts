@@ -1,9 +1,9 @@
-import type { Brand } from "@prisma/client";
 import db from "../../db";
 import { notFound } from "next/navigation";
+import { TBrand } from "@/dataModel/brands";
 
 //create a prisma query to fetch all brands
-export async function fetchBrands(): Promise<Brand[]> {
+export async function fetchBrands(): Promise<TBrand[]> {
 	return await db.brand.findMany({
 		orderBy: [
 			{
@@ -14,7 +14,7 @@ export async function fetchBrands(): Promise<Brand[]> {
 }
 
 //create a prisma query to fetch a brand by id
-export async function fetchBrandById(id: string): Promise<Brand | null> {
+export async function fetchBrandById(id: string): Promise<TBrand | null> {
 	const brand = await db.brand.findFirst({
 		where: {
 			id,
@@ -29,7 +29,7 @@ export async function fetchBrandById(id: string): Promise<Brand | null> {
 }
 
 //create a prisma query to add a new brand
-export async function createBrand(data: Omit<Brand, "id">): Promise<Brand> {
+export async function createBrand(data: Omit<TBrand, "id">): Promise<TBrand> {
 	return await db.brand.create({
 		data: {
 			...data,
@@ -40,8 +40,8 @@ export async function createBrand(data: Omit<Brand, "id">): Promise<Brand> {
 //create a prisma query to update a brand
 export async function updateBrand(
 	id: string,
-	data: Partial<Omit<Brand, "id" | "createdAt" | "updatedAt">>
-): Promise<Brand> {
+	data: Partial<Omit<TBrand, "id" | "createdAt" | "updatedAt">>
+): Promise<TBrand> {
 	return await db.brand.update({
 		where: {
 			id,
@@ -53,7 +53,7 @@ export async function updateBrand(
 }
 
 //create a prisma query to delete a brand
-export async function deleteBrand(id: string): Promise<Brand> {
+export async function deleteBrand(id: string): Promise<TBrand> {
 	return await db.brand.delete({
 		where: {
 			id,

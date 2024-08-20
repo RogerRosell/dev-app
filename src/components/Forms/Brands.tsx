@@ -8,9 +8,9 @@ import {
 } from "../ui/form";
 import { Button } from "../ui/button";
 
-import { BrandFormSchema as formSchema, BrandType } from '../../dataModel/brands';
+import { BrandFormSchema as formSchema, TBrand } from '@/dataModel/brands';
 import FormElement from '../Molecules/FormElement';
-import { useBrandStore, BrandsState, BrandsActions } from "../../../stores/brands-store"
+import { useBrandStore, BrandsState, BrandsActions } from "@/stores/brands-store"
 
 const BrandForm = () => {
 const brands: BrandsState = useBrandStore((state: any) => state.brands);
@@ -18,13 +18,13 @@ const setInitBrands: BrandsActions = useBrandStore((state: any) => state.setInit
 const addBrand = useBrandStore((state: any) => state.addBrand);
 if (!brands) setInitBrands
 
-  const form= useForm<BrandType>({
+  const form= useForm<TBrand>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
     }
   })
-  const handleSubmit = (values: BrandType) => {
+  const handleSubmit = (values: TBrand) => {
     addBrand(values)
   };
 

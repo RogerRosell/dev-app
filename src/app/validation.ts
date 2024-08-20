@@ -7,7 +7,7 @@ export const formSchema = zfd.formData({
 
 export const DevelopersFormSchema = zfd.formData({
 	name: zfd.text(z.string().min(2, "Too short").max(20, "Too long")),
-	brand: zfd.text(z.string().min(2, "Too short").max(20, "Too long")),
+	brandId: zfd.text(z.string()),
 });
 
 export const EmulsionsFormSchema = zfd.formData({
