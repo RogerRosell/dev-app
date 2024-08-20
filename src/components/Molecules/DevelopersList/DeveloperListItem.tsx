@@ -1,4 +1,4 @@
-import { useDevelopersStore } from '@/stores/developers-store';
+import { useDevelopersStore } from '../../../stores/developers-store';
 
 export const DeveloperListItem = ({id, name, brand}: any): JSX.Element => {
   const { deleteDeveloper } = useDevelopersStore();  

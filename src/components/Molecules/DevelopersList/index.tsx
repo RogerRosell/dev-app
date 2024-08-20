@@ -2,9 +2,8 @@
 
 import { useEffect } from 'react';
 import { TDeveloper } from '@/dataModel/developers';
-import { useDevelopersStore, TDevelopersState } from '@/stores/developers-store';
+import { useDevelopersStore, TDevelopersState } from '../../../stores/developers-store';
 import { DeveloperListItem } from './DeveloperListItem';
-import { Brand } from '@/types';
 
 const DevelopersList = (): JSX.Element => {
   const developers: TDevelopersState = useDevelopersStore((state: any) => state.developers);

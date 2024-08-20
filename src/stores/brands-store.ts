@@ -1,15 +1,15 @@
 // import { createStore } from 'zustand';
 import { create } from 'zustand';
 import { getAllBrands, addBrand2, deleteBrand2 } from '../app/actions';
-import { BrandType } from '../app/dataModel/brands';
+import { TBrand } from '../app/dataModel/brands';
 import { devtools, persist } from 'zustand/middleware';
 
 export type BrandsState = {
-  brands: BrandType[] | undefined;
+  brands: TBrand[] | undefined;
 };
 export type BrandsActions = {
   setInitBrands: () => void;
-  addBrand: (newBrands: BrandType) => void;
+  addBrand: (newBrands: TBrand) => void;
   deleteBrand: (brandId: string) => void;
 };
 

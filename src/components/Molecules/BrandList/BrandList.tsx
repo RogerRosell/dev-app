@@ -1,8 +1,8 @@
 "use client"
 
 import { useEffect } from 'react';
-import { BrandType } from '../../../dataModel/brands';
-import { useBrandStore, BrandsState } from '../../../../stores/brands-store';
+import { TBrand } from '@/dataModel/brands';
+import { useBrandStore, BrandsState } from '../../../stores/brands-store';
 import { BrandListItem } from './BrandListItem';
 
 const BrandList = (): JSX.Element => {
@@ -17,7 +17,7 @@ const BrandList = (): JSX.Element => {
     <>
     <h1 className="text-xl font-semibold">Brands</h1>
     <ul>
-      {brands && Array.isArray(brands) && brands.map((brand: BrandType): JSX.Element => {
+      {brands && Array.isArray(brands) && brands.map((brand: TBrand): JSX.Element => {
         return <BrandListItem key={brand.id} id={brand.id} name={brand.name} />
       })}
       </ul>
