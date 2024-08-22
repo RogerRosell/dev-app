@@ -15,7 +15,7 @@ import { DeveloperFormSchema as formSchema, TDeveloper } from '@/dataModel/devel
 import FormElement from '../Molecules/FormElement';
 import { useDevelopersStore, TDevelopersState, TDevelopersActions } from "../../stores/developers-store";
 import { BrandsActions, BrandsState, useBrandStore } from "../../stores/brands-store";
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem, SelectGroup } from '@radix-ui/react-select';
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem, } from '@/components/ui/select';
 
 const DeveloperForm = () => {
   const brandList: BrandsState = useBrandStore((state: any) => state.brands);
