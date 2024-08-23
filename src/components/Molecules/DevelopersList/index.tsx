@@ -1,17 +1,14 @@
 "use client"
 
-import { useEffect } from 'react';
 import { TDeveloper } from '@/dataModel/developers';
-import { useDevelopersStore, TDevelopersState } from '../../../stores/developers-store';
+import { useDevelopersStore, TDevelopersState } from '@/stores/developers-store';
 import { DeveloperListItem } from './DeveloperListItem';
 
 const DevelopersList = (): JSX.Element => {
   const developers: TDevelopersState = useDevelopersStore((state: any) => state.developers);
   const { setInitDevelopers } = useDevelopersStore(); 
 
-  useEffect(() => {
-    !developers && setInitDevelopers();
-  }, [developers, setInitDevelopers])
+  if (!developers) setInitDevelopers;
 
   return (
     <>

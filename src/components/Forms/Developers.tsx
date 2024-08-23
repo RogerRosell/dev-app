@@ -13,8 +13,8 @@ import { Button } from "@/components/ui/button";
 
 import { DeveloperFormSchema as formSchema, TDeveloper } from '@/dataModel/developers';
 import FormElement from '../Molecules/FormElement';
-import { useDevelopersStore, TDevelopersState, TDevelopersActions } from "../../stores/developers-store";
-import { BrandsActions, BrandsState, useBrandStore } from "../../stores/brands-store";
+import { useDevelopersStore, TDevelopersState, TDevelopersActions } from "@/stores/developers-store";
+import { BrandsActions, BrandsState, useBrandStore } from "@/stores/brands-store";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem, } from '@/components/ui/select';
 
 const DeveloperForm = () => {

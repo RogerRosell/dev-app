@@ -14,8 +14,7 @@ import { Button } from "@/components/ui/button";
 import { EmulsionFormSchema as formSchema, TEmulsion } from '@/dataModel/emulsions';
 import FormElement from '../Molecules/FormElement';
 import { useEmulsionsStore, TEmulsionsState, TEmulsionsActions } from '@/stores/emulsions-store';
-import { useDevelopersStore, TDevelopersState, TDevelopersActions } from "../../stores/developers-store";
-import { BrandsActions, BrandsState, useBrandStore } from "../../stores/brands-store";
+import { BrandsActions, BrandsState, useBrandStore } from "@/stores/brands-store";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem, } from '@/components/ui/select';
 import { Input } from '../ui/input';
 

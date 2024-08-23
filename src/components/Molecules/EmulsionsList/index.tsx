@@ -1,17 +1,14 @@
 "use client"
 
-import { useEffect } from 'react';
 import { TEmulsion } from '@/dataModel/emulsions';
 import { useEmulsionsStore, TEmulsionsState } from '@/stores/emulsions-store';
 import { EmulsionListItem } from './EmulsionListItem';
 
 const EmulsionsList = (): JSX.Element => {
   const emulsions: TEmulsionsState = useEmulsionsStore((state: any) => state.emulsions);
-  const { setInitEmulsions } = useEmulsionsStore(); 
+  const { setInitEmulsions } = useEmulsionsStore();
 
-  useEffect(() => {
-    !emulsions && setInitEmulsions();
-  }, [emulsions, setInitEmulsions])
+  if (!emulsions) setInitEmulsions;
 
   return (
     <>

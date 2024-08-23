@@ -1,4 +1,4 @@
-import { useEmulsionsStore } from '../../../stores/emulsions-store';
+import { useEmulsionsStore } from '@/stores/emulsions-store';
 
 export const EmulsionListItem = ({id, name, brand}: any): JSX.Element => {
   const { deleteEmulsion } = useEmulsionsStore();  

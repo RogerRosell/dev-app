@@ -1,6 +1,5 @@
 "use client"
 
-import { useEffect } from 'react';
 import { TBrand } from '@/dataModel/brands';
 import { useBrandStore, BrandsState } from '@/stores/brands-store';
 import { BrandListItem } from './BrandListItem';
@@ -9,9 +8,7 @@ const BrandList = (): JSX.Element => {
   const brands: BrandsState = useBrandStore((state: any) => state.brands);
   const { setInitBrands } = useBrandStore();  
 
-  useEffect(() => {
-    !brands && setInitBrands();
-  }, [brands, setInitBrands])
+  if (!brands) setInitBrands;
 
   return (
     <>
