@@ -13,15 +13,17 @@ interface IFormElementProps {
   field: any;
   label: string;
   defaultValue: any;
+  type?: string;
 }
 
 
-const FormElement = ({ field, label, defaultValue }: IFormElementProps) => {
+const FormElement = ({ field, label, defaultValue, type }: IFormElementProps) => {
+  console.log("field", field);
   return (
     <FormItem>
       <FormLabel className="text-lg">{label}</FormLabel>
       <FormControl>
-        <Input {...field} placeholder={defaultValue} type="text" />
+        <Input {...field} placeholder={defaultValue} type={type ? type : "text"} />
       </FormControl>
       <FormMessage />
     </FormItem>

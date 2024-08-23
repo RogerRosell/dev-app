@@ -1,13 +1,17 @@
 "use server";
 
 import { fetchDevelopers,createDeveloper, deleteDeveloper } from '@/db/queries/developers';
-import { createBrand, fetchBrands, deleteBrand } from "../db/queries/brands";
-// import { createEmulsion, fetchEmulsions } from "@/db/queries/emulsions";
+import { createBrand, fetchBrands, deleteBrand } from "@/db/queries/brands";
+import { fetchEmulsions, createEmulsion, deleteEmulsion } from '@/db/queries/emulsions';
 // import { deleteDeveloper } from '@/db/queries/developers';
 // import { createRodet } from "@/db/queries/rodets";
-import { formSchema, DevelopersFormSchema } from "./validation";
+import { BrandFormSchema } from '@/dataModel/brands';
+import { DeveloperFormSchema } from '@/dataModel/developers';
+import { EmulsionFormSchema } from '@/dataModel/emulsions';
 // import { ZodError } from "zod";
 // import { fetchDevelopers } from '@/db/queries/developers';
+
+// import { addEmulsion } from '../../.next/server/app/developers/page';
 
 export type State =
 	| {
@@ -73,6 +77,34 @@ export const getFormSchema = (formType: String) => {};
 // 	}
 // }
 
+export const getAllEmulsions = async () => {
+	try {
+		const emulsions = await fetchEmulsions();
+		return emulsions;
+	} catch (error) {
+		return(error);
+	}
+}
+
+export const addEmulsion = async (data: any) => {
+	try {
+		const { name, iso, notes, brandId } = EmulsionFormSchema.parse(data);
+		const newEmulsion = await createEmulsion({ name: name, iso: iso, notes: notes, brandId: brandId });
+		return newEmulsion;
+	} catch (e) {
+		console.log(e);
+	}
+}
+
+export const deleteEmulsion2 = async (id: string) => {
+	try {
+		const response = await deleteEmulsion(id);
+		return response;
+	} catch(e) {
+		console.log(e)
+	}
+}
+
 export const getAllDevelopers = async () => {
 	const developers = await fetchDevelopers();
 	return developers;
@@ -80,7 +112,7 @@ export const getAllDevelopers = async () => {
 
 export const addDeveloper2 = async (data: any) => {
 	try {
-		const { name, brandId } = DevelopersFormSchema.parse(data);
+		const { name, brandId } = DeveloperFormSchema.parse(data);
 		const newDeveloper = await createDeveloper({ name: name, brandId: brandId });
 		return newDeveloper;
 	} catch (e) {
@@ -115,7 +147,7 @@ export const deleteBrand2 = async (id: string) => {
 
 export const addBrand2 = async (data: any) => {
 	try {
-		const { name } = formSchema.parse(data);
+		const { name } = BrandFormSchema.parse(data);
 		const newBrand = await createBrand({ name: name });
 		return newBrand;
 	} catch (e) {

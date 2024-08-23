@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import { TBrand } from '@/dataModel/brands';
-import { useBrandStore, BrandsState } from '../../../stores/brands-store';
+import { useBrandStore, BrandsState } from '@/stores/brands-store';
 import { BrandListItem } from './BrandListItem';
 
 const BrandList = (): JSX.Element => {

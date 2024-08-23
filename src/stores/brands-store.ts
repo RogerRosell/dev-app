@@ -1,7 +1,7 @@
 // import { createStore } from 'zustand';
 import { create } from 'zustand';
 import { getAllBrands, addBrand2, deleteBrand2 } from '../app/actions';
-import { TBrand } from '../app/dataModel/brands';
+import { TBrand } from '../dataModel/brands';
 import { devtools, persist } from 'zustand/middleware';
 
 export type BrandsState = {
