@@ -5,13 +5,13 @@ export default function Home() {
     <main className="flex flex-col items-center justify-between p-24">
       <div><h1 className="font-bold text-2xl">Welcome to the dev app</h1></div>
       <div>
-        <Link href="./emulsions">Emulsions</Link>
+        <Link href="/emulsions">Emulsions</Link>
       </div>
       <div>
-        <Link href="./brands">Brands</Link>
+        <Link href="/brands">Brands</Link>
         </div>
       <div>
-        <Link href="./developers">Developers</Link>
+        <Link href="/developers">Developers</Link>
       </div>      
     </main>
   );
