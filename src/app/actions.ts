@@ -1,17 +1,20 @@
 "use server";
 
-import { fetchDevelopers,createDeveloper, deleteDeveloper } from '@/db/queries/developers';
+// import { fetchDevelopers,createDeveloper, deleteDeveloper } from '@/db/queries/developers';
 import { createBrand, fetchBrands, deleteBrand } from "@/db/queries/brands";
 import { fetchEmulsions, createEmulsion, deleteEmulsion } from '@/db/queries/emulsions';
 // import { deleteDeveloper } from '@/db/queries/developers';
 // import { createRodet } from "@/db/queries/rodets";
 import { BrandFormSchema } from '@/dataModel/brands';
-import { DeveloperFormSchema } from '@/dataModel/developers';
+// import { DeveloperFormSchema } from '@/dataModel/developers';
 import { EmulsionFormSchema } from '@/dataModel/emulsions';
 // import { ZodError } from "zod";
 // import { fetchDevelopers } from '@/db/queries/developers';
 
 // import { addEmulsion } from '../../.next/server/app/developers/page';
+import { getAllDevelopers, addDeveloper, deleteDeveloper2 } from './develpers.actions';
+
+export { getAllDevelopers, addDeveloper, deleteDeveloper2 }
 
 export type State =
 	| {
@@ -105,29 +108,29 @@ export const deleteEmulsion2 = async (id: string) => {
 	}
 }
 
-export const getAllDevelopers = async () => {
-	const developers = await fetchDevelopers();
-	return developers;
-}
+// export const getAllDevelopers = async () => {
+// 	const developers = await fetchDevelopers();
+// 	return developers;
+// }
 
-export const addDeveloper2 = async (data: any) => {
-	try {
-		const { name, brandId } = DeveloperFormSchema.parse(data);
-		const newDeveloper = await createDeveloper({ name: name, brandId: brandId });
-		return newDeveloper;
-	} catch (e) {
-		console.log(e);
-	}
-}
+// export const addDeveloper2 = async (data: any) => {
+// 	try {
+// 		const { name, brandId } = DeveloperFormSchema.parse(data);
+// 		const newDeveloper = await createDeveloper({ name: name, brandId: brandId });
+// 		return newDeveloper;
+// 	} catch (e) {
+// 		console.log(e);
+// 	}
+// }
 
-export const deleteDeveloper2 = async (id: string) => {
-	try {
-		const response = await deleteDeveloper(id);
-		return response;
-	} catch(e) {
-		console.log(e)
-	}
-}
+// export const deleteDeveloper2 = async (id: string) => {
+// 	try {
+// 		const response = await deleteDeveloper(id);
+// 		return response;
+// 	} catch(e) {
+// 		console.log(e)
+// 	}
+// }
 
 
 export const getAllBrands = async () => {
