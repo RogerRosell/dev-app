@@ -8,7 +8,7 @@ export const getAllDevelopers = async () => {
 	return developers;
 }
 
-export const addDeveloper = async (data: any) => {
+export const addDeveloper2 = async (data: any) => {
 	try {
 		const { name, brandId } = DeveloperFormSchema.parse(data);
 		const newDeveloper = await createDeveloper({ name: name, brandId: brandId });

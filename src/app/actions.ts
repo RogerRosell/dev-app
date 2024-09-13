@@ -12,9 +12,9 @@ import { EmulsionFormSchema } from '@/dataModel/emulsions';
 // import { fetchDevelopers } from '@/db/queries/developers';
 
 // import { addEmulsion } from '../../.next/server/app/developers/page';
-import { getAllDevelopers, addDeveloper, deleteDeveloper2 } from './develpers.actions';
+import { getAllDevelopers, addDeveloper2, deleteDeveloper2 } from './develpers.actions';
 
-export { getAllDevelopers, addDeveloper, deleteDeveloper2 }
+export { getAllDevelopers, addDeveloper2, deleteDeveloper2 }
 
 export type State =
 	| {
