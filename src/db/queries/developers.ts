@@ -17,20 +17,6 @@ export async function fetchDevelopers(): Promise<TDeveloper[]> {
 	});
 }
 
-//create a prisma query to fetch a brand by id
-// export async function fetchBrandById(id: string): Promise<Brand | null> {
-// 	const brand = await db.brand.findFirst({
-// 		where: {
-// 			id,
-// 		},
-// 	});
-
-// 	if (!brand) {
-// 		notFound();
-// 	}
-
-// 	return brand;
-// }
 
 //create a prisma query to add a new brand
 export async function createDeveloper(data: Omit<TDeveloper, "id" | "Brand" | "createdAt">): Promise<TDeveloper> {
