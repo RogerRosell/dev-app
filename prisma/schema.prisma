@@ -89,12 +89,19 @@ model Developer {
     Brand     Brand?   @relation(fields: [brandId], references: [id])
     brandId   String?
 }
-
 model Agitation {
+    id          String   @id @default(cuid())
+    createdAt   DateTime @default(now()) @map(name: "created_at")    
+    initial     String?
+    turns       Int?
+    AgitationFrequency   AgitationFrequency? @relation(fields: [frequencyId], references: [id])
+    frequencyId String
+    Recipe      Recipe[]
+}
+
+model AgitationFrequency {
     id        String   @id @default(cuid())
     createdAt DateTime @default(now()) @map(name: "created_at")
-    initial   String
-    turns     Int
-    frequency String
-    recipe    Recipe[]
+    frequency String   @unique
+    Agitation Agitation[]
 }

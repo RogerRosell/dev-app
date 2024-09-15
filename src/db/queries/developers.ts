@@ -17,8 +17,6 @@ export async function fetchDevelopers(): Promise<TDeveloper[]> {
 	});
 }
 
-
-//create a prisma query to add a new brand
 export async function createDeveloper(data: Omit<TDeveloper, "id" | "Brand" | "createdAt">): Promise<TDeveloper> {
 	return await db.developer.create({
 		data: {
