@@ -1,12 +1,12 @@
 "use client"
 
 import { TDeveloper } from '@/dataModel/developers';
-import { useDevelopersStore, TDevelopersState } from '@/stores/developers-store';
+import { useDeveloperStore, TDeveloperState } from '@/stores/developers-store';
 import { DeveloperListItem } from './DeveloperListItem';
 
 const DevelopersList = (): JSX.Element => {
-  const developers: TDevelopersState = useDevelopersStore((state: any) => state.developers);
-  const { setInitDevelopers } = useDevelopersStore(); 
+  const developers: TDeveloperState = useDeveloperStore((state: any) => state.developers);
+  const { setInitDevelopers } = useDeveloperStore(); 
 
   if (!developers) setInitDevelopers;
 

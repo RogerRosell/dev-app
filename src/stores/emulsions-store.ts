@@ -1,11 +1,11 @@
 import { create } from 'zustand';
-import { devtools, persist } from 'zustand/middleware';
+import { handleItemAction } from '../app/actions/db.actions';
 import { TEmulsion } from '../dataModel/emulsions';
-import { getAllEmulsions, addEmulsion, deleteEmulsion2 } from '@/app/actions';
+import { devtools, persist } from 'zustand/middleware';
 
 export type TEmulsionsState = {
   emulsions: TEmulsion[] | undefined;
-}
+};
 
 export type TEmulsionsActions = {
   setInitEmulsions: () => void;
@@ -15,29 +15,29 @@ export type TEmulsionsActions = {
 
 export type TEmulsionsStore = TEmulsionsState & TEmulsionsActions;
 
-export const useEmulsionsStore = create<TEmulsionsStore>()(
+export const useEmulsionStore = create<TEmulsionsStore>()(
   devtools(
     persist(
       (set, get) => ({
         emulsions: undefined,
         setInitEmulsions: async () => {
-          const response = await getAllEmulsions();
-          console.log("response >> ", response)
-          response && set({ emulsions: response as TEmulsion[] });
+          const response = await handleItemAction('list', 'emulsion');
+          response && set({ emulsions: response });
         },
         addEmulsion: async (newEmulsion) => {
+          await handleItemAction('add', 'emulsion', newEmulsion);
           const setInitEmulsions = get().setInitEmulsions;
-          const response = await addEmulsion(newEmulsion);
-          response && setInitEmulsions();
-          console.log("addEmulsion")
+          setInitEmulsions();
         },
         deleteEmulsion: async (emulsionId) => {
+          await handleItemAction('delete', 'emulsion', emulsionId);
           const setInitEmulsions = get().setInitEmulsions;
-          const response = await deleteEmulsion2(emulsionId);
-          response && setInitEmulsions();
-        }
+          setInitEmulsions();
+        },
       }),
-      { name: 'emulsionsStore' }
+      {
+        name: 'emulsions-storage',
+      }
     )
   )
-)
+);

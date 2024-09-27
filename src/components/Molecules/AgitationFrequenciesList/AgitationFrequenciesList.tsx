@@ -1,12 +1,12 @@
 "use client";
 
 import { TAgitationFrequency } from '@/dataModel/agitationFrequency';
-import { useAgitationFrequenciesStore, AgitationFrequenciesState } from '@/stores/agitation-frequencies-store';
+import { useAgitationFrequencyStore, AgitationFrequenciesState } from '@/stores/agitation-frequencies-store';
 import { AgitationFrequenciesListItem } from './AgitationFrequenciesListItem';
 
 const AgitationFrequenciesList = () => {
-  const frequencies: AgitationFrequenciesState =  useAgitationFrequenciesStore((state: any) => state.agitationFrequencies);
-  const { setInitAgitationFrequencies } = useAgitationFrequenciesStore();  
+  const frequencies: AgitationFrequenciesState =  useAgitationFrequencyStore((state: any) => state.agitationFrequencies);
+  const { setInitAgitationFrequencies } = useAgitationFrequencyStore();  
 
   if (!frequencies) setInitAgitationFrequencies;
 

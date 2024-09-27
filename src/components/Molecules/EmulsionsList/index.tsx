@@ -1,12 +1,12 @@
 "use client"
 
 import { TEmulsion } from '@/dataModel/emulsions';
-import { useEmulsionsStore, TEmulsionsState } from '@/stores/emulsions-store';
+import { useEmulsionStore, TEmulsionsState } from '@/stores/emulsions-store';
 import { EmulsionListItem } from './EmulsionListItem';
 
 const EmulsionsList = (): JSX.Element => {
-  const emulsions: TEmulsionsState = useEmulsionsStore((state: any) => state.emulsions);
-  const { setInitEmulsions } = useEmulsionsStore();
+  const emulsions: TEmulsionsState = useEmulsionStore((state: any) => state.emulsions);
+  const { setInitEmulsions } = useEmulsionStore();
 
   if (!emulsions) setInitEmulsions;
 

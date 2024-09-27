@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button";
 
 import { EmulsionFormSchema as formSchema, TEmulsion } from '@/dataModel/emulsions';
 import FormElement from '../Molecules/FormElement';
-import { useEmulsionsStore, TEmulsionsState, TEmulsionsActions } from '@/stores/emulsions-store';
+import { useEmulsionStore, TEmulsionsState, TEmulsionsActions } from '@/stores/emulsions-store';
 import { BrandsActions, BrandsState, useBrandStore } from "@/stores/brands-store";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem, } from '@/components/ui/select';
 import { Input } from '../ui/input';
@@ -22,9 +22,9 @@ const EmulsionForm = () => {
   const brandList: BrandsState = useBrandStore((state: any) => state.brands);
   const setInitBrands: BrandsActions = useBrandStore((state: any) => state.setInitBrands);
 
-  const emulsions: TEmulsionsState = useEmulsionsStore((state: any) => state.emulsions);
-  const setInitEmulsions: TEmulsionsActions = useEmulsionsStore((state: any) => state.setInitEmulsions)
-  const addEmulsion = useEmulsionsStore((state: any) => state.addEmulsion);
+  const emulsions: TEmulsionsState = useEmulsionStore((state: any) => state.emulsions);
+  const setInitEmulsions: TEmulsionsActions = useEmulsionStore((state: any) => state.setInitEmulsions)
+  const addEmulsion = useEmulsionStore((state: any) => state.addEmulsion);
 
   if (!brandList) setInitBrands;
   if (!emulsions) setInitEmulsions

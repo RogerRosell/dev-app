@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button";
 
 import { DeveloperFormSchema as formSchema, TDeveloper } from '@/dataModel/developers';
 import FormElement from '../Molecules/FormElement';
-import { useDevelopersStore, TDevelopersState, TDevelopersActions } from "@/stores/developers-store";
+import { useDeveloperStore, TDeveloperState, DevelopersActions } from "@/stores/developers-store";
 import { BrandsActions, BrandsState, useBrandStore } from "@/stores/brands-store";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem, } from '@/components/ui/select';
 
@@ -22,9 +22,9 @@ const DeveloperForm = () => {
   const setInitBrands: BrandsActions = useBrandStore((state: any) => state.setInitBrands);
 
 
-  const developers: TDevelopersState = useDevelopersStore((state: any) => state.developers);
-  const setInitDevelopers: TDevelopersActions = useDevelopersStore((state: any) => state.setInitDevelopers)
-  const addDeveloper = useDevelopersStore((state: any) => state.addDeveloper);
+  const developers: TDeveloperState = useDeveloperStore((state: any) => state.developers);
+  const setInitDevelopers: DevelopersActions = useDeveloperStore((state: any) => state.setInitDevelopers)
+  const addDeveloper = useDeveloperStore((state: any) => state.addDeveloper);
 
   if (!brandList) setInitBrands;
   if (!developers) setInitDevelopers

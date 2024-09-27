@@ -1,15 +1,15 @@
-// import { createStore } from 'zustand';
 import { create } from 'zustand';
-import { getAllBrands, addBrand2, deleteBrand2 } from '../app/actions';
+import { handleItemAction } from '../app/actions/db.actions';
 import { TBrand } from '../dataModel/brands';
 import { devtools, persist } from 'zustand/middleware';
 
 export type BrandsState = {
   brands: TBrand[] | undefined;
 };
+
 export type BrandsActions = {
   setInitBrands: () => void;
-  addBrand: (newBrands: TBrand) => void;
+  addBrand: (newBrand: TBrand) => void;
   deleteBrand: (brandId: string) => void;
 };
 
@@ -21,22 +21,23 @@ export const useBrandStore = create<BrandsStore>()(
       (set, get) => ({
         brands: undefined,
         setInitBrands: async () => {
-          const response = await getAllBrands();
+          const response = await handleItemAction('list', 'brand');
           response && set({ brands: response });
         },
-        addBrand: async (newBrands) => {
+        addBrand: async (newBrand) => {
+          await handleItemAction('add', 'brand', newBrand);
           const setInitBrands = get().setInitBrands;
-          const response = await addBrand2(newBrands);
-          response && setInitBrands();
+          setInitBrands();
         },
         deleteBrand: async (brandId) => {
+          await handleItemAction('delete', 'brand', brandId);
           const setInitBrands = get().setInitBrands;
-          const response = await deleteBrand2(brandId);
-          response && setInitBrands();
-        }
+          setInitBrands();
+        },
       }),
-      { name: 'brandStore' }
+      {
+        name: 'brands-storage',
+      }
     )
   )
-  
 );
