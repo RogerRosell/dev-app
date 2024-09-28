@@ -1,22 +1,11 @@
-"use client"
+import React from 'react'
 
-// import { CountdownCircleTimer } from 'react-countdown-circle-timer'
+import Timer from '@/components/Timer'
 
-
-const Timer = () => {
+const page = () => {
   return (
-    <div>
-      Timer
-    {/* <CountdownCircleTimer
-    isPlaying
-    duration={60}
-    colors={['#004777', '#F7B801', '#A30000', '#A30000']}
-    colorsTime={[7, 5, 2, 0]}
-  >
-    {({ remainingTime }) => remainingTime}
-  </CountdownCircleTimer> */}
-  </div>
+    <div><Timer initialTime={120} alertTime={30}  /></div>
   )
 }
 
-export default Timer
+export default page
