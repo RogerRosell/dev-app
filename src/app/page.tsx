@@ -16,6 +16,9 @@ export default function Home() {
       <div>
         <Link href="/developers">Developers</Link>
       </div>
+      <div className='mt-6'>
+        <Link href="/timer">Timer</Link>
+      </div>     
     </main>
   );
 }
